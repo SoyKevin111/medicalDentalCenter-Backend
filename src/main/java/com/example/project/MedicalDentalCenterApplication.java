@@ -1,5 +1,7 @@
 package com.example.project;
 
+import com.example.project.medicalconsultation.infraestructure.adapter.out.persistence.database.MedicalConsultationRepositorySql;
+import com.example.project.medicalconsultation.infraestructure.adapter.out.persistence.entity.MedicalConsultationEntity;
 import com.example.project.nurse.infraestructure.adapter.out.persistence.database.NurseRepositoryMySql;
 import com.example.project.nurse.infraestructure.adapter.out.persistence.entity.NurseEntity;
 import com.example.project.patient.domain.Gender;
@@ -7,8 +9,8 @@ import com.example.project.patient.infraestructure.adapter.out.persistence.datab
 import com.example.project.patient.infraestructure.adapter.out.persistence.entity.PatientEntity;
 import com.example.project.specialistDoctor.infraestructure.adapter.out.persistence.entity.SpecialistDoctorEntity;
 import com.example.project.specialistDoctor.infraestructure.adapter.out.persistence.database.SpecialistDoctorRepositorySql;
-import com.example.project.diagnostic.domain.model.Symptom;
-import com.example.project.diagnostic.infraestructure.adapter.out.persistence.mysql.SymptomRepositoryMysql;
+import com.example.project.symptom.domain.Symptom;
+import com.example.project.symptom.infraestructure.adapter.out.persistence.mysql.SymptomRepositoryMysql;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,7 +26,7 @@ public class MedicalDentalCenterApplication {
 	}
 
 	@Bean //Test
-	CommandLineRunner init(PatientRepositorySql patientRepository, NurseRepositoryMySql nurseRepository, SymptomRepositoryMysql symptomRepository, SpecialistDoctorRepositorySql specialistDoctorRepository){
+	CommandLineRunner init(PatientRepositorySql patientRepository, NurseRepositoryMySql nurseRepository, SymptomRepositoryMysql symptomRepository, SpecialistDoctorRepositorySql specialistDoctorRepository, MedicalConsultationRepositorySql medicalConsultationRepository){
 		return args -> {
 			PatientEntity patien1 = PatientEntity.builder()
 				.name("Kevin 1")
@@ -66,10 +68,17 @@ public class MedicalDentalCenterApplication {
 			SpecialistDoctorEntity specialistDoctorEntity2 = SpecialistDoctorEntity.builder().name("Ferran Torres").specialty("Ortodoncista").build();
 			SpecialistDoctorEntity specialistDoctorEntity3 = SpecialistDoctorEntity.builder().name("Julio Encizo").specialty("Periodoncista").build();
 
+
+			MedicalConsultationEntity mce = MedicalConsultationEntity.builder()
+				.diagnostic("prueba final")
+				.specialistDoctorEntity(specialistDoctorEntity1)
+				.build();
+
 			patientRepository.saveAll(List.of(patien1, patient2,patient3));
 			nurseRepository.saveAll(List.of(nurse1,nurse2));
 			symptomRepository.saveAll(List.of(symptom1,symptom2,symptom3,symptom4));
 			specialistDoctorRepository.saveAll(List.of(specialistDoctorEntity1, specialistDoctorEntity2, specialistDoctorEntity3));
+			medicalConsultationRepository.save(mce);
 		};
 	}
 

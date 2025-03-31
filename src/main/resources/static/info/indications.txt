@@ -104,7 +104,7 @@ src/main/java/
             SpecialistDoctor.java
         enfermera/                 // Módulo de Enfermería
             Nurse.java
-        diagnostico/               // Módulo de Diagnóstico
+        sintoma/               // Módulo de sintoma
             Symptom.java
             DiagnosticoController.java
             DiagnosticoUseCase.java

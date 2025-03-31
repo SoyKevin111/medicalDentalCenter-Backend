@@ -3,12 +3,13 @@ package com.example.project.specialistDoctor.infraestructure.adapter.out.persist
 import jakarta.persistence.*;
 import lombok.*;
 
+//@JsonIgnoreProperties("specialistDoctorEntity")
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "symptom")
+@Table(name = "specialist_doctor")
 @Builder
 public class SpecialistDoctorEntity {
    @Id

@@ -80,6 +80,7 @@ agrega la consulta medica actual y se guarda la consulta medica actual en la fic
 | `nombre`      | Nombre de la enfermera |
 
 
-
+##  🧾**Avances - API**
+![Prueba](src/main/resources/static/api-progress/img/img.png)
 
 

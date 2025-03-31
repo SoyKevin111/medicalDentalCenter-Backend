@@ -17,7 +17,6 @@ public class NurseUseCase implements INurseUseCase {
 
    @Autowired
    private INurseRepository nurseRepository;
-
    private final NurseValidator nurseValidator;
 
    public NurseUseCase(NurseValidator nurseValidator){

@@ -4,6 +4,7 @@ import com.example.project.medicalconsultation.domain.MedicalConsultation;
 import com.example.project.medicalconsultation.domain.MedicalConsultationRequest;
 import com.example.project.medicalconsultation.domain.port.in.IMedicalConsultationUseCase;
 import com.example.project.medicalconsultation.domain.port.out.IMedicalConsultationRepository;
+import com.example.project.medicalconsultation.domain.validation.MedicalConsultationRequestValidator;
 import com.example.project.specialistDoctor.domain.SpecialistDoctor;
 import com.example.project.specialistDoctor.domain.port.in.ISpecialistDoctorUseCase;
 import com.example.project.utils.exception.GeneralValidationException;
@@ -21,10 +22,17 @@ public class MedicalConsultationUseCase implements IMedicalConsultationUseCase {
    IMedicalConsultationRepository medicalConsultationRepository;
    @Autowired
    ISpecialistDoctorUseCase specialistDoctorUseCase;
+   @Autowired
+   MedicalConsultationRequestValidator validator;
 
    @Transactional()
    @Override
    public Optional<MedicalConsultation> create(MedicalConsultationRequest medicalConsultationRequest) {
+      this.validator.requestValidator(medicalConsultationRequest);
+      List<String> errors = validator.createValidator(medicalConsultationRequest);
+      if (!errors.isEmpty()) {
+         throw new GeneralValidationException("[Error Domain, create()] MedicalConsultation", errors);
+      }
       Optional<SpecialistDoctor> specialistDoctorOptional = specialistDoctorUseCase.findById(medicalConsultationRequest.getSpecialistDoctorId());
       try {
          MedicalConsultation medicalConsultation = MedicalConsultation.builder()
@@ -32,16 +40,9 @@ public class MedicalConsultationUseCase implements IMedicalConsultationUseCase {
             .diagnostic(medicalConsultationRequest.getDiagnostic())
             .build();
          return Optional.of(this.medicalConsultationRepository.save(medicalConsultation));
-      }
-      catch (Exception ex){
+      } catch (Exception ex) {
          throw new GeneralValidationException("[Error Database]MedicalConsultation", List.of("Error al guardar la consulta medica en la base de datos."));
       }
-   }
-
-   @Transactional(readOnly = true)
-   @Override
-   public Optional<MedicalConsultation> findById(Long id) {
-      return Optional.empty();
    }
 
    @Transactional(readOnly = true)
@@ -54,13 +55,31 @@ public class MedicalConsultationUseCase implements IMedicalConsultationUseCase {
    @Transactional()
    @Override
    public Optional<MedicalConsultation> update(MedicalConsultationRequest medicalConsultationRequest, Long id) {
-      return Optional.empty();
+      this.validator.requestValidator(medicalConsultationRequest);
+      MedicalConsultation medicalConsultation = medicalConsultationRepository.findById(id)
+         .orElseThrow(()-> new GeneralValidationException("[Error Database, getById()]Medical Consultation",List.of("Consulta médica no encontrada.")));
+
+      medicalConsultationRequest.setId(id);
+      if(medicalConsultationRequest.getSpecialistDoctorId() != null){
+         this.validator.validatorSpecialistDoctorId(id);
+         Optional<SpecialistDoctor> specialistDoctor = specialistDoctorUseCase.findById(medicalConsultationRequest.getSpecialistDoctorId());
+         specialistDoctor.ifPresent(medicalConsultation::setSpecialistDoctor); //specialistDoctor.ifPresent(s -> medicalConsultation.setSpecialistDoctor(s));
+      }
+      if (medicalConsultationRequest.getDiagnostic() != null) {
+         this.validator.validatorDiagnostic(medicalConsultationRequest.getDiagnostic());
+         medicalConsultation.setDiagnostic(medicalConsultationRequest.getDiagnostic());
+      }
+      return Optional.of(medicalConsultationRepository.save(medicalConsultation));
+
    }
 
    @Transactional()
    @Override
    public void deleteById(Long id) {
-
+      Optional<MedicalConsultation> mc = this.medicalConsultationRepository.findById(id);
+      if (mc.isPresent()) {
+         this.medicalConsultationRepository.deleteById(id);
+      }
    }
 
 }

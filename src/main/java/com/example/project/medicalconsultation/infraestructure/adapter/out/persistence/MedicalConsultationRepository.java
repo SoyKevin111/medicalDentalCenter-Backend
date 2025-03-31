@@ -4,7 +4,6 @@ import com.example.project.medicalconsultation.domain.MedicalConsultation;
 import com.example.project.medicalconsultation.domain.port.out.IMedicalConsultationRepository;
 import com.example.project.medicalconsultation.infraestructure.adapter.out.persistence.database.MedicalConsultationRepositorySql;
 import com.example.project.medicalconsultation.infraestructure.adapter.out.persistence.entity.MedicalConsultationEntity;
-import com.example.project.specialistDoctor.domain.SpecialistDoctor;
 import com.example.project.specialistDoctor.infraestructure.adapter.out.persistence.entity.SpecialistDoctorEntity;
 import com.example.project.utils.mapper.GeneralMapper;
 import org.springframework.beans.factory.annotation.Autowired;

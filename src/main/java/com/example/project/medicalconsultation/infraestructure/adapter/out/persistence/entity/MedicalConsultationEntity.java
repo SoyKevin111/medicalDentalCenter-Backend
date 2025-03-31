@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
-//@JsonIgnoreProperties("medicalConsultationEntity")
 @Entity
 @Table(name = "medical_consultation")
 @Getter

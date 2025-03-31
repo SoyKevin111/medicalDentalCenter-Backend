@@ -10,8 +10,10 @@ import lombok.*;
 @AllArgsConstructor
 public class MedicalConsultationRequest {
 
-   @JsonProperty("id")
+   Long id;
+   @JsonProperty("specialistDoctorId")
    Long specialistDoctorId;
    @JsonProperty("diagnostic")
    String diagnostic;
+
 }

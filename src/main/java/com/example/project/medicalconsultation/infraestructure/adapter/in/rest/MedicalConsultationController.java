@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,11 +26,25 @@ public class MedicalConsultationController {
       return ResponseEntity.ok().body(medicalConsultation);
    }
 
+   @PutMapping("/{id}")
+   public ResponseEntity<?> update(@RequestBody MedicalConsultationRequest medicalConsultationRequest, @PathVariable Long id){
+      Optional<MedicalConsultation> medicalConsultation = this.medicalConsultationUseCase.update(medicalConsultationRequest, id);
+      if(medicalConsultation.isEmpty()){
+         return ResponseEntity.badRequest().build();
+      }
+
+      return ResponseEntity.ok().body(medicalConsultation);
+   }
+
    @GetMapping
    public List<MedicalConsultation> findAll(){
       return this.medicalConsultationUseCase.findAll();
    }
 
 
+   @DeleteMapping("/{id}")
+   public void delete(@PathVariable Long id){
+      this.medicalConsultationUseCase.deleteById(id);
+   }
 
 }

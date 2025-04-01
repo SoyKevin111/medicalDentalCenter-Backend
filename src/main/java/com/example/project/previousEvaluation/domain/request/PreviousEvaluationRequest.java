@@ -15,12 +15,18 @@ public class PreviousEvaluationRequest {
    List<PreviousEvaluationItemRequest> previousEvaluationItemRequests;
    Long nurseId;
    String caseDescription;
+
+
 }
 
 /*
 {
-   "items": [item1, item2, item3],
-   "nurse":nurseId,
+   "items": [
+      item1,
+      item2,
+      item3
+   ],
+   "nurseId": 2,
    "caseDescription":"sdkmsdamkdamkmkd"
 }
 

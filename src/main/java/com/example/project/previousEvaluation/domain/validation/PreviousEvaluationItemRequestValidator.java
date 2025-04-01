@@ -21,7 +21,7 @@ public class PreviousEvaluationItemRequestValidator {
       }
 
       if(!errors.isEmpty()){
-         throw new GeneralValidationException("[Error Domain, Property] PreviousEvaluationItem",errors);
+         throw new GeneralValidationException("[Error Domain, Property] PreviousEvaluationItem Request",errors);
       }
    }
 }

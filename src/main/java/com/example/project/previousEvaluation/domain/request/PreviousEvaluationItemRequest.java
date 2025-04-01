@@ -15,7 +15,7 @@ public class PreviousEvaluationItemRequest {
 /*
 {
    "symptomId": 2, //por defecto, buscas el id del sintoma
-   "value": true
+   "hasSymptom": true
 }
 
 */

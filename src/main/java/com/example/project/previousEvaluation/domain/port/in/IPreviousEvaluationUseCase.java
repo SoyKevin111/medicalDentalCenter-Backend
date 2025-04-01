@@ -1,5 +1,5 @@
 package com.example.project.previousEvaluation.domain.port.in;
 
-public interface PreviousEvaluationUseCase {
+public interface IPreviousEvaluationUseCase {
 
 }

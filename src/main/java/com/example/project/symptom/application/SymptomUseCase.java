@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SymptomUseCase implements ISymptomUseCase {
@@ -27,5 +28,15 @@ public class SymptomUseCase implements ISymptomUseCase {
    @Override
    public List<Symptom> findAll() {
       return (List<Symptom>) this.symptomRepository.findAll();
+   }
+
+   @Override
+   public Optional<Symptom> findById(Long id) {
+      Optional<Symptom> symptom = this.symptomRepository.findById(id);
+
+      if(symptom.isPresent()){
+         return symptom;
+      }
+      return Optional.empty();
    }
 }

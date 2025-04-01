@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class SymptomRepository implements ISymptomRepository {
@@ -23,5 +24,10 @@ public class SymptomRepository implements ISymptomRepository {
    @Override
    public List<Symptom> findAll() {
       return (List<Symptom>) this.symptomRepository.findAll();
+   }
+
+   @Override
+   public Optional<Symptom> findById(Long id) {
+      return this.symptomRepository.findById(id);
    }
 }

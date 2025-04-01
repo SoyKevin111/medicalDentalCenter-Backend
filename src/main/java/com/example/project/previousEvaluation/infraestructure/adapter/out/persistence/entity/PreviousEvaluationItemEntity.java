@@ -20,6 +20,6 @@ public class PreviousEvaluationItemEntity {
    @JoinColumn(name = "symptom_id", referencedColumnName = "id", nullable = false)
    Symptom symptom;
    @NotNull
-   @Column(name = "value")
-   boolean value;
+   @Column(name = "hasSymptom")
+   Boolean hasSymptom;
 }

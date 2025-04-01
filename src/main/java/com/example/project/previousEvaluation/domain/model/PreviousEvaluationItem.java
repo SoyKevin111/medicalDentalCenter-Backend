@@ -11,5 +11,5 @@ import lombok.*;
 public class PreviousEvaluationItem {
    Long id;
    Symptom symptom;
-   boolean value;
+   Boolean hasSymptom;
 }

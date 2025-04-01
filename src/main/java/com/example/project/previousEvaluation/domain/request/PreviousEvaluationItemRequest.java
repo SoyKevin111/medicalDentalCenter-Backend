@@ -9,7 +9,7 @@ import lombok.*;
 @Builder
 public class PreviousEvaluationItemRequest {
    Long symptomId;
-   boolean value;
+   Boolean hasSymptom;
 }
 
 /*

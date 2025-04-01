@@ -4,8 +4,10 @@ import com.example.project.previousEvaluation.domain.model.PreviousEvaluationIte
 import com.example.project.previousEvaluation.domain.port.in.IPreviousEvaluationItemUseCase;
 import com.example.project.previousEvaluation.domain.port.out.IPreviousEvaluationItemRepository;
 import com.example.project.previousEvaluation.domain.request.PreviousEvaluationItemRequest;
+import com.example.project.previousEvaluation.domain.validation.PreviousEvaluationItemRequestValidator;
 import com.example.project.symptom.domain.Symptom;
 import com.example.project.symptom.domain.port.in.ISymptomUseCase;
+import com.example.project.utils.exception.GeneralValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,14 +21,17 @@ public class PreviousEvaluationItemUseCase implements IPreviousEvaluationItemUse
    IPreviousEvaluationItemRepository previousEvaluationItemRepository;
    @Autowired
    ISymptomUseCase symptomUseCase;
+   @Autowired
+   PreviousEvaluationItemRequestValidator validator;
+
 
    @Override
    public PreviousEvaluationItem create(PreviousEvaluationItemRequest previousEvaluationItemRequest) {//id symptom, value
-      //validaciones...
+      this.validator.createValidator(previousEvaluationItemRequest);
       Optional<Symptom> optionalSymptom = this.symptomUseCase.findById(previousEvaluationItemRequest.getSymptomId());
       if(optionalSymptom.isPresent()){
          PreviousEvaluationItem p =  PreviousEvaluationItem.builder()
-            .value(previousEvaluationItemRequest.isValue())
+            .hasSymptom(previousEvaluationItemRequest.getHasSymptom())
             .symptom(optionalSymptom.get())
             .build();
          return this.previousEvaluationItemRepository.save(p);
@@ -36,11 +41,15 @@ public class PreviousEvaluationItemUseCase implements IPreviousEvaluationItemUse
 
    @Override
    public Optional<PreviousEvaluationItem> findById(Long id) {
-      return Optional.empty();
+      Optional<PreviousEvaluationItem> optionalPreviousEvaluationItem = this.previousEvaluationItemRepository.findById(id);
+      if(optionalPreviousEvaluationItem.isEmpty()){
+         throw new GeneralValidationException("[Error Database, findById()] PreviousEvaluationItem",List.of("Error al obtener al item por ID."));
+      }
+      return optionalPreviousEvaluationItem;
    }
 
    @Override
    public List<PreviousEvaluationItem> findAll() {
-      return List.of();
+      return (List<PreviousEvaluationItem>) this.previousEvaluationItemRepository.findAll();
    }
 }

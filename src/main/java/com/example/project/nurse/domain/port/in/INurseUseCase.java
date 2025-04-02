@@ -10,4 +10,5 @@ public interface INurseUseCase {
    Nurse save(Nurse nurse);
    List<Nurse> findAll();
    Nurse findRandomNurse();
+   boolean existsById(Long id);
 }

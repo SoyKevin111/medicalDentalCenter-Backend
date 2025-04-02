@@ -17,7 +17,6 @@ public class NurseUseCase implements INurseUseCase {
 
    @Autowired
    private INurseRepository nurseRepository;
-
    private final NurseValidator nurseValidator;
 
    public NurseUseCase(NurseValidator nurseValidator){
@@ -53,5 +52,10 @@ public class NurseUseCase implements INurseUseCase {
    @Override
    public Nurse findRandomNurse() {
       return this.nurseRepository.findRandomNurse();
+   }
+
+   @Override
+   public boolean existsById(Long id) {
+      return this.nurseRepository.existsById(id);
    }
 }

@@ -11,4 +11,5 @@ public interface INurseRepository {
    Nurse findRandomNurse();
    Nurse save(Nurse nurse);
    List<Nurse> findAll();
+   boolean existsById(Long id);
 }

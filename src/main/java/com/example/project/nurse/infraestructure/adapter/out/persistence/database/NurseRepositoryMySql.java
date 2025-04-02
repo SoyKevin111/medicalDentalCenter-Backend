@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface NurseRepositoryMySql extends JpaRepository<NurseEntity, Long> {
    @Query(value = "SELECT * FROM nurse ORDER BY RAND() LIMIT 1", nativeQuery = true)
    NurseEntity findRandomNurse();
-
+   boolean existsById(Long id);
    boolean existsByName(String name);
 
 }

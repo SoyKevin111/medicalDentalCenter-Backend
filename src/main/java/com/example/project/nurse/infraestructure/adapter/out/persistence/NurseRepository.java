@@ -50,4 +50,9 @@ public class NurseRepository implements INurseRepository {
          .stream()
          .map(e -> this.generalMapper.toEntity(e, Nurse.class)).toList();
    }
+
+   @Override
+   public boolean existsById(Long id) {
+      return this.nurseRepository.existsById(id);
+   }
 }

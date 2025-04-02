@@ -16,9 +16,11 @@ public class PreviousEvaluationItemEntity {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    Long id;
+
    @OneToOne(cascade = CascadeType.MERGE)
    @JoinColumn(name = "symptom_id", referencedColumnName = "id", nullable = false)
    Symptom symptom;
+
    @NotNull
    @Column(name = "has_symptom")
    Boolean hasSymptom;

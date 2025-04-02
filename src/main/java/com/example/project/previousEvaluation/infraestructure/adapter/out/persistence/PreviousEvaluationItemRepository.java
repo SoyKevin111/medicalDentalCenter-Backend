@@ -22,7 +22,7 @@ public class PreviousEvaluationItemRepository implements IPreviousEvaluationItem
    GeneralMapper mapper;
 
    @Override
-   public PreviousEvaluationItem save(PreviousEvaluationItem previousEvaluationItem) {
+   public PreviousEvaluationItem save(PreviousEvaluationItem previousEvaluationItem) { //one to one
       PreviousEvaluationItemEntity peie = this.mapper.toEntity(previousEvaluationItem, PreviousEvaluationItemEntity.class);
       if(previousEvaluationItem.getSymptom() != null){
          peie.setSymptom(

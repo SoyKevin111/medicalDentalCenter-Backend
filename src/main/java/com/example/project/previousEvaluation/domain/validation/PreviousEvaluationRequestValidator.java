@@ -3,12 +3,14 @@ package com.example.project.previousEvaluation.domain.validation;
 import com.example.project.previousEvaluation.domain.request.PreviousEvaluationItemRequest;
 import com.example.project.previousEvaluation.domain.request.PreviousEvaluationRequest;
 import com.example.project.utils.exception.GeneralValidationException;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Component
 public class PreviousEvaluationRequestValidator {
 
    public void createValidator(PreviousEvaluationRequest per){
@@ -49,6 +51,7 @@ public class PreviousEvaluationRequestValidator {
       }
       return null;
    }
+
 
 }
 

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/medical-center/service/previous-entity-item")
+@RequestMapping("/medical-center/service/previous-evaluation-item")
 public class PreviousEvaluationItemController {
 
    @Autowired

@@ -5,6 +5,7 @@ import com.example.project.symptom.domain.Symptom;
 import com.example.project.symptom.domain.port.out.ISymptomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +16,7 @@ public class SymptomUseCase implements ISymptomUseCase {
    @Autowired
    private ISymptomRepository symptomRepository;
 
+   @Transactional
    @Override
    public Symptom create(Symptom symptom) {
       try {
@@ -30,6 +32,7 @@ public class SymptomUseCase implements ISymptomUseCase {
       return (List<Symptom>) this.symptomRepository.findAll();
    }
 
+   @Transactional(readOnly = true)
    @Override
    public Optional<Symptom> findById(Long id) {
       Optional<Symptom> symptom = this.symptomRepository.findById(id);

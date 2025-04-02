@@ -53,4 +53,9 @@ public class NurseUseCase implements INurseUseCase {
    public Nurse findRandomNurse() {
       return this.nurseRepository.findRandomNurse();
    }
+
+   @Override
+   public boolean existsById(Long id) {
+      return this.nurseRepository.existsById(id);
+   }
 }

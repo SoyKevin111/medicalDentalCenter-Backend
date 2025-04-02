@@ -83,17 +83,17 @@ public class MedicalDentalCenterApplication {
 				.specialistDoctorEntity(specialistDoctorEntity1)
 				.build();
 
-			PreviousEvaluationItemEntity pei = PreviousEvaluationItemEntity.builder()
+/*			PreviousEvaluationItemEntity pei = PreviousEvaluationItemEntity.builder()
 				.symptom(symptom1)
 				.hasSymptom(true)
-				.build();
+				.build();*/
 
 			patientRepository.saveAll(List.of(patien1, patient2,patient3));
 			nurseRepository.saveAll(List.of(nurse1,nurse2));
 			symptomRepository.saveAll(List.of(symptom1,symptom2,symptom3,symptom4));
 			specialistDoctorRepository.saveAll(List.of(specialistDoctorEntity1, specialistDoctorEntity2, specialistDoctorEntity3));
 			medicalConsultationRepository.save(mce);
-			previousEvaluationItemRepository.save(pei);
+			//previousEvaluationItemRepository.save(pei);
 		};
 	}
 

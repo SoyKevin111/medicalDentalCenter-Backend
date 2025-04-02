@@ -10,6 +10,7 @@ import com.example.project.symptom.domain.port.in.ISymptomUseCase;
 import com.example.project.utils.exception.GeneralValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +26,7 @@ public class PreviousEvaluationItemUseCase implements IPreviousEvaluationItemUse
    PreviousEvaluationItemRequestValidator validator;
 
 
+   @Transactional
    @Override
    public PreviousEvaluationItem create(PreviousEvaluationItemRequest previousEvaluationItemRequest) {//id symptom, value
       this.validator.createValidator(previousEvaluationItemRequest);

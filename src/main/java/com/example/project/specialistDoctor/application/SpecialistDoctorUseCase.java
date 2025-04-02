@@ -33,6 +33,7 @@ public class SpecialistDoctorUseCase implements ISpecialistDoctorUseCase {
       return (List<SpecialistDoctor>) this.specialistDoctorRepository.findAll();
    }
 
+   @Transactional(readOnly = true)
    @Override
    public Optional<SpecialistDoctor> findById(Long id) {
       Optional<SpecialistDoctor> optionalSpecialistDoctor = this.specialistDoctorRepository.findById(id);

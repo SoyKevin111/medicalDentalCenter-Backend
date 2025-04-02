@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public interface IPreviousEvaluationRepository {
    PreviousEvaluation save(PreviousEvaluation previousEvaluation);
-   Optional<PreviousEvaluation> findById(Long id);
    List<PreviousEvaluation> findAll();
+   Optional<PreviousEvaluation> findById(Long id);
+   boolean existsById(Long id);
 }

@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PreviousEvaluationRepositorySql extends JpaRepository<PreviousEvaluationEntity, Long> {
+   boolean existsById(Long id);
 }

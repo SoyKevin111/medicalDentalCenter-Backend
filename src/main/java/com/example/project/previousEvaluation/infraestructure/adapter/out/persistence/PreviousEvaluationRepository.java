@@ -27,7 +27,15 @@ public class PreviousEvaluationRepository implements IPreviousEvaluationReposito
 
    @Override
    public Optional<PreviousEvaluation> findById(Long id) {
-      return Optional.empty();
+      return this.previousEvaluationRepository.findById(id)
+         .map(
+            entity -> this.generalMapper.toDomain( entity,PreviousEvaluation.class)
+         );
+   }
+
+   @Override
+   public boolean existsById(Long id) {
+      return this.previousEvaluationRepository.existsById(id);
    }
 
    @Override

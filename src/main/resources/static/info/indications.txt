@@ -117,3 +117,24 @@ cambiar de base de datos:
 modificar application.properties
 agregar dependencia de sql
 en infraestructure/adapter/out/persistence/Repository.java solo cambiar la inyeccion de dependencia a cualquiera de database/
+
+
+
+{
+    "items":[
+        {
+            "symptomId": 3,
+            "hasSymptom":true
+        },
+        {
+            "symptomId": 1,
+            "hasSymptom":false
+        },
+        {
+            "symptomId": 1,
+            "hasSymptom":true
+        }
+    ],
+    "nurseId":1,
+    "caseSelected":"BRACKETS"
+}

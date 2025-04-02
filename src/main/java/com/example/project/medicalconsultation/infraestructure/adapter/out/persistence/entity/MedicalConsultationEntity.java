@@ -17,7 +17,7 @@ public class MedicalConsultationEntity {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    Long id;
 
-   @OneToOne(cascade = {CascadeType.REFRESH})
+   @ManyToOne( cascade = {CascadeType.REFRESH})
    @JoinColumn(name="specialist_doctor_id", referencedColumnName="id", nullable = false)
    SpecialistDoctorEntity specialistDoctorEntity;
 

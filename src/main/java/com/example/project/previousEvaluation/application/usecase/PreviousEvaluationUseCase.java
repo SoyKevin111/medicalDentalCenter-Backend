@@ -11,6 +11,7 @@ import com.example.project.previousEvaluation.domain.request.PreviousEvaluationR
 import com.example.project.previousEvaluation.domain.validation.PreviousEvaluationRequestValidator;
 import com.example.project.symptom.domain.Symptom;
 import com.example.project.symptom.domain.port.in.ISymptomUseCase;
+import com.example.project.utils.exception.GeneralValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,16 +61,24 @@ public class PreviousEvaluationUseCase implements IPreviousEvaluationUseCase {
       return previousEvaluationItemList;
    }
 
-
-
    @Override
    public List<PreviousEvaluation> findAll() {
       return List.of();
    }
 
+   @Override
+   public Optional<PreviousEvaluation> findById(Long id) {
+      Optional<PreviousEvaluation> optionalPreviousEvaluation = this.previousEvaluationRepository.findById(id);
+      if(optionalPreviousEvaluation.isEmpty()){
+         throw new GeneralValidationException("[Error Database, find()] PreviousEvaluation",List.of("No se pudo encontrar la evaluacion previa."));
+      }
+      return optionalPreviousEvaluation;
+   }
 
-
-
+   @Override
+   public boolean existsById(Long id) {
+      return this.previousEvaluationRepository.existsById(id);
+   }
 
 
 }

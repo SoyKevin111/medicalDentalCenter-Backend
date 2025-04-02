@@ -126,8 +126,9 @@ agrega la consulta medica actual y se guarda la consulta medica actual en la fic
 
 
 ##  🧾**Avances - API**
-![Prueba](src/main/resources/static/api-progress/img/img.png)
 
+![Result](src/main/resources/static/api-progress/img/previous_evaluation/previous-evaluation-create-validation3.png)
+![Result](src/main/resources/static/api-progress/img/readme/img-1.png)
 
 
 

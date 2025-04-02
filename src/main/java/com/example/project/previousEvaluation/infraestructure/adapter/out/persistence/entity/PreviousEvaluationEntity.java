@@ -1,7 +1,5 @@
 package com.example.project.previousEvaluation.infraestructure.adapter.out.persistence.entity;
 
-
-import com.example.project.nurse.domain.Nurse;
 import com.example.project.nurse.infraestructure.adapter.out.persistence.entity.NurseEntity;
 import com.example.project.previousEvaluation.domain.model.CaseSelected;
 import jakarta.persistence.*;

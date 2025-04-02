@@ -23,29 +23,74 @@ agrega la consulta medica actual y se guarda la consulta medica actual en la fic
 
 # 🗂️ **Entidades del Sistema**
 
+## 🏥 **Centro Médico**
+
+### `CentroMedico`
+| **Campo** | **Descripción** |
+|-----------|----------------|
+| `id`      | Identificador único |
+| `nombre`  | Nombre del centro médico |
+
+---
+
+## 📋 **Ficha Médica**
+
+### `FichaMedica`
+| **Campo**         | **Descripción** |
+|-------------------|----------------|
+| `id`             | Identificador único |
+| `Paciente p`     | Paciente asociado a la ficha |
+| `EvaluacionPrevia evlp` | Evaluación previa realizada |
+| `ConsultaMedica cm` | Consulta médica registrada |
+| `fechaApertura`  | Fecha de apertura de la ficha |
+
+---
+
+## 🩺 **Evaluación Previa**
+
+### `EvaluacionPrevia`
+| **Campo**        | **Descripción** |
+|------------------|----------------|
+| `id`            | Identificador único |
+| `List<EvaluacionPreviaDetalles> evls` | Lista de detalles de la evaluación previa |
+| `caso`          | Descripción del caso |
+| `Enfermera e`   | Enfermera que realizó la evaluación |
+
+---
+
+## 🩻 **Detalle de Evaluación Previa**
+
+### `EvaluacionPreviaDetalle`
+| **Campo**        | **Descripción** |
+|------------------|----------------|
+| `id`            | Identificador único |
+| `Sintoma stm`   | Síntoma registrado |
+| `tieneSintoma`  | Indica si el paciente presenta el síntoma (`true` o `false`) |
+
+---
+
 ## 🏨 **Consulta Médica**
 
 ### `ConsultaMedica`
-| **Campo**               | **Descripción**        |
-|-------------------------|------------------------|
-| `id`                    | Identificador único    |
-| `EvaluacionPrevia evlp` | Evaluación previa      |
-| `MedicoEspecialista mdep`| Médico especialista    |
-| `diagnostico`           | Diagnóstico de la consulta |
+| **Campo**             | **Descripción** |
+|-----------------------|----------------|
+| `id`                 | Identificador único |
+| `MedicoEspecialista mdep` | Médico especialista que atiende la consulta |
+| `diagnostico`        | Diagnóstico de la consulta |
 
 ---
 
 ## 👤 **Paciente**
 
 ### `Paciente` (INPUT)
-| **Campo**     | **Descripción**              |
-|---------------|------------------------------|
-| `id`          | Identificador único          |
-| `nombre`      | Nombre del paciente          |
-| `apellido`    | Apellido del paciente        |
-| `edad`        | Edad del paciente            |
-| `genero`      | Género del paciente          |
-| `cedula`      | Número de cédula del paciente |
+| **Campo**    | **Descripción** |
+|-------------|----------------|
+| `id`        | Identificador único |
+| `nombre`    | Nombre del paciente |
+| `apellido`  | Apellido del paciente |
+| `edad`      | Edad del paciente |
+| `genero`    | Género del paciente |
+| `cedula`    | Número de cédula del paciente |
 | `...otros datos personales` | Otros detalles del paciente |
 
 ---
@@ -53,34 +98,36 @@ agrega la consulta medica actual y se guarda la consulta medica actual en la fic
 ## ⚕️ **Síntoma**
 
 ### `Sintoma`
-| **Campo**     | **Descripción**        |
-|---------------|------------------------|
-| `id`          | Identificador único    |
-| `nombre`      | Nombre del síntoma     |
+| **Campo**    | **Descripción** |
+|-------------|----------------|
+| `id`        | Identificador único |
+| `nombre`    | Nombre del síntoma |
 
 ---
 
 ## 👨‍⚕️ **Médico Especialista**
 
 ### `MedicoEspecialista`
-| **Campo**      | **Descripción**         |
-|----------------|-------------------------|
-| `id`           | Identificador único     |
-| `nombre`       | Nombre del médico       |
-| `especialidad` | Especialidad médica     |
+| **Campo**      | **Descripción** |
+|---------------|----------------|
+| `id`          | Identificador único |
+| `nombre`      | Nombre del médico |
+| `especialidad` | Especialidad médica |
 
 ---
 
 ## 👩‍⚕️ **Enfermera**
 
 ### `Enfermera`
-| **Campo**     | **Descripción**        |
-|---------------|------------------------|
-| `id`          | Identificador único    |
-| `nombre`      | Nombre de la enfermera |
+| **Campo**    | **Descripción** |
+|-------------|----------------|
+| `id`        | Identificador único |
+| `nombre`    | Nombre de la enfermera |
 
 
 ##  🧾**Avances - API**
 ![Prueba](src/main/resources/static/api-progress/img/img.png)
+
+
 
 

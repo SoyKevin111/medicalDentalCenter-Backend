@@ -38,10 +38,11 @@ public class PreviousEvaluationUseCase implements IPreviousEvaluationUseCase {
       Optional<Nurse> optionalNurse =  this.previousEvaluationUseCaseValidator.validadorNurse(previousEvaluationRequest.getNurseId()); //validacion enfermera
 
       List<PreviousEvaluationItem> previousEvaluationList = this.asignationItemList(previousEvaluationRequest.getPreviousEvaluationItemRequests());
+
       PreviousEvaluation previousEvaluation = new PreviousEvaluation();
       previousEvaluation.setPreviousEvaluationItemList(previousEvaluationList);
       optionalNurse.ifPresent(previousEvaluation::setNurse);
-      previousEvaluation.setCaseDescription(previousEvaluationRequest.getCaseDescription());
+      previousEvaluation.setCaseSelected(previousEvaluationRequest.getCaseSelected());
       return this.previousEvaluationRepository.save(previousEvaluation);
    }
 

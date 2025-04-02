@@ -17,7 +17,7 @@ public class PreviousEvaluationItemEntity {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    Long id;
 
-   @OneToOne(cascade = CascadeType.MERGE)
+   @ManyToOne(cascade = CascadeType.REFRESH)
    @JoinColumn(name = "symptom_id", referencedColumnName = "id", nullable = false)
    Symptom symptom;
 

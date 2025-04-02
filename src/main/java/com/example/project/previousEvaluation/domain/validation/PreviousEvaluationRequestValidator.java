@@ -1,14 +1,12 @@
 package com.example.project.previousEvaluation.domain.validation;
 
+import com.example.project.previousEvaluation.domain.model.CaseSelected;
 import com.example.project.previousEvaluation.domain.request.PreviousEvaluationItemRequest;
 import com.example.project.previousEvaluation.domain.request.PreviousEvaluationRequest;
 import com.example.project.utils.exception.GeneralValidationException;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Component
 public class PreviousEvaluationRequestValidator {
@@ -25,14 +23,24 @@ public class PreviousEvaluationRequestValidator {
          errors.add("Id enfermera, vacio o indefinido");
       }
 
-      if( per.getCaseDescription() == null  || per.getCaseDescription().isEmpty()){
-         errors.add("Descripcion del caso, vacio o indefinido");
+      if( per.getCaseSelected() == null){
+         errors.add("Propiedad caso seleccionado vacio o indefinido");
+      }
+
+      if(!caseSelectedValidator(per.getCaseSelected())){
+         errors.add("Caso seleccionado incorrecto (Solo: CARIES, BRACKETS, ENCIAS, OTROS)");
       }
 
       //valiacion final
       if(!errors.isEmpty()){
          throw new GeneralValidationException("Error Domain, create()] PreviousEvaluationRequest", errors);
       }
+
+   }
+
+   public boolean caseSelectedValidator(CaseSelected caseSelected){
+      return Arrays.stream(CaseSelected.values())
+         .anyMatch(c -> c.equals(caseSelected));
 
    }
 

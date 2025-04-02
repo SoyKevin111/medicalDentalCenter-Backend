@@ -3,6 +3,7 @@ package com.example.project.previousEvaluation.infraestructure.adapter.out.persi
 
 import com.example.project.nurse.domain.Nurse;
 import com.example.project.nurse.infraestructure.adapter.out.persistence.entity.NurseEntity;
+import com.example.project.previousEvaluation.domain.model.CaseSelected;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,14 +22,16 @@ public class PreviousEvaluationEntity {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    Long id;
 
-   @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+   @OneToMany(cascade = {CascadeType.PERSIST})
    @JoinColumn(name = "previous_evaluation_id")
    List<PreviousEvaluationItemEntity> previousEvaluationItemList = new ArrayList<>();
 
-   @OneToOne(cascade = CascadeType.MERGE)
+   @ManyToOne(cascade = CascadeType.REFRESH)
    @JoinColumn(name = "nurse_id", referencedColumnName="id", nullable = false)
    NurseEntity nurse;
 
-   @Column(name = "case_description")
-   String caseDescription;
+   @Column(name = "case_selected")
+   @Enumerated(EnumType.STRING)
+   CaseSelected caseSelected;
+
 }

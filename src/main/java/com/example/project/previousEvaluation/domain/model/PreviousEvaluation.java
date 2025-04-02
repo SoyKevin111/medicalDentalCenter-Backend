@@ -14,6 +14,6 @@ public class PreviousEvaluation {
    Long id;
    List<PreviousEvaluationItem> previousEvaluationItemList;
    Nurse nurse;
-   String caseDescription;
+   CaseSelected caseSelected;
 }
 

@@ -1,5 +1,6 @@
 package com.example.project.previousEvaluation.domain.request;
 
+import com.example.project.previousEvaluation.domain.model.CaseSelected;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
@@ -14,7 +15,7 @@ public class PreviousEvaluationRequest {
    @JsonProperty("items")
    List<PreviousEvaluationItemRequest> previousEvaluationItemRequests;
    Long nurseId;
-   String caseDescription;
+   CaseSelected caseSelected;
 
 
 }

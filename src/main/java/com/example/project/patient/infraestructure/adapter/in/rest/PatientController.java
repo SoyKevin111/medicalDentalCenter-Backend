@@ -1,8 +1,8 @@
 package com.example.project.patient.infraestructure.adapter.in.rest;
 
 import com.example.project.patient.application.usecase.PatientUseCase;
-import com.example.project.patient.domain.RequestPatient;
 import com.example.project.patient.domain.Patient;
+import com.example.project.patient.domain.PatientRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +20,8 @@ public class PatientController {
    private PatientUseCase patientUseCase;
 
    @PutMapping("/{id}")
-   public ResponseEntity<?> update(@RequestBody RequestPatient requestPatient, @PathVariable Long id){
-     Optional<Patient> optionalPatient = this.patientUseCase.update(requestPatient, id);
+   public ResponseEntity<?> update(@RequestBody PatientRequest patientRequest, @PathVariable Long id){
+     Optional<Patient> optionalPatient = this.patientUseCase.update(patientRequest, id);
        if(optionalPatient.isPresent()){
          return ResponseEntity.ok(optionalPatient.get());
       }
@@ -29,8 +29,8 @@ public class PatientController {
    }
 
    @PostMapping
-   public ResponseEntity<?> create(@RequestBody Patient patient){
-      return ResponseEntity.status(HttpStatus.CREATED).body(this.patientUseCase.save(patient));
+   public ResponseEntity<?> create(@RequestBody PatientRequest patientRequest){
+      return ResponseEntity.status(HttpStatus.CREATED).body(this.patientUseCase.save(patientRequest));
    }
 
    @GetMapping

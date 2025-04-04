@@ -1,11 +1,11 @@
 package com.example.project.patient.application.usecase;
 
-import com.example.project.patient.domain.RequestPatient;
+import com.example.project.patient.domain.PatientRequest;
 import com.example.project.patient.domain.port.in.IPatientUseCase;
 import com.example.project.patient.domain.Patient;
 import com.example.project.patient.domain.port.out.IPatientRepository;
 import com.example.project.patient.domain.validation.PatientValidator;
-import com.example.project.utils.exception.GeneralValidationException;
+import com.example.project.shared.exception.GeneralValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,21 +22,30 @@ public class PatientUseCase implements IPatientUseCase {
    PatientValidator patientValidator;
 
    @Override
-   public Patient save(Patient patient) {
-      List<String> errors = this.patientValidator.validatePatientData(patient);
+   public Patient save(PatientRequest patientRequest) {
+      List<String> errors = this.patientValidator.validatePatientData(patientRequest);
       if(!errors.isEmpty()){
          throw new GeneralValidationException("[Error Domain]Patient entered fields.",errors);
       } //validaciones de dominio
 
-      if(patientRepository.existsByIdentification(patient.getIdentification())){ //validaciones en la base de datos.
+      if(patientRepository.existsByIdentification(patientRequest.getIdentification())){ //validaciones en la base de datos.
          throw new GeneralValidationException("[Error Database]Patient",List.of("Error de creacion, paciente existente."));
       }
+
+      Patient patient = Patient.builder()
+         .surname(patientRequest.getSurname())
+         .name(patientRequest.getName())
+         .gender(patientRequest.getGender())
+         .identification(patientRequest.getIdentification())
+         .age(patientRequest.getAge())
+         .build();
+
       return this.patientRepository.save(patient);
    }
 
    @Override
-   public Optional<Patient> update(RequestPatient requestPatient, Long id) {
-      List<String> errors = this.patientValidator.validateRequestPatientData(requestPatient);
+   public Optional<Patient> update(PatientRequest patientRequest, Long id) {
+      List<String> errors = this.patientValidator.validateRequestPatientData(patientRequest);
       if(!errors.isEmpty()){
          throw new GeneralValidationException("[Error Domain]RequestPatient",errors);
       } //validaciones de dominio
@@ -44,9 +53,9 @@ public class PatientUseCase implements IPatientUseCase {
       Optional<Patient> optionalPatient = this.patientRepository.findById(id);
       if(optionalPatient.isPresent()){
          Patient patientDB = optionalPatient.get();
-         patientDB.setName(requestPatient.name());
-         patientDB.setSurname(requestPatient.surname());
-         patientDB.setAge(requestPatient.age());
+         patientDB.setName(patientRequest.getName());
+         patientDB.setSurname(patientRequest.getSurname());
+         patientDB.setAge(patientRequest.getAge());
 
          return Optional.of(this.patientRepository.update(patientDB));
       }//validaciones de base datos

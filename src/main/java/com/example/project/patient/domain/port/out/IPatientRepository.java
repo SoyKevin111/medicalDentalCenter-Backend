@@ -1,7 +1,6 @@
 package com.example.project.patient.domain.port.out;
 
 import com.example.project.patient.domain.Patient;
-import com.example.project.patient.domain.RequestPatient;
 
 import java.util.List;
 import java.util.Optional;

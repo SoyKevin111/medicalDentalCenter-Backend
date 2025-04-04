@@ -4,7 +4,7 @@ import com.example.project.nurse.domain.port.in.INurseUseCase;
 import com.example.project.nurse.domain.Nurse;
 import com.example.project.nurse.domain.port.out.INurseRepository;
 import com.example.project.nurse.domain.validation.NurseValidator;
-import com.example.project.utils.exception.GeneralValidationException;
+import com.example.project.shared.exception.GeneralValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

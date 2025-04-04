@@ -21,7 +21,7 @@ public class PreviousEvaluationEntity {
    Long id;
 
    @OneToMany(cascade = {CascadeType.PERSIST})
-   @JoinColumn(name = "previous_evaluation_id")
+   @JoinColumn(name = "previous_evaluation_id") //hace referencia a esta entidad(PreviousEvaluation) en la tabla de items
    List<PreviousEvaluationItemEntity> previousEvaluationItemList = new ArrayList<>();
 
    @ManyToOne(cascade = CascadeType.REFRESH)

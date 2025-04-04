@@ -7,7 +7,7 @@ import com.example.project.previousEvaluation.domain.request.PreviousEvaluationI
 import com.example.project.previousEvaluation.domain.validation.PreviousEvaluationItemRequestValidator;
 import com.example.project.symptom.domain.Symptom;
 import com.example.project.symptom.domain.port.in.ISymptomUseCase;
-import com.example.project.utils.exception.GeneralValidationException;
+import com.example.project.shared.exception.GeneralValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

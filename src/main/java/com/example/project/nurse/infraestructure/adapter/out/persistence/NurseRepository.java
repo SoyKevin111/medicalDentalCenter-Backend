@@ -4,7 +4,7 @@ import com.example.project.nurse.domain.Nurse;
 import com.example.project.nurse.domain.port.out.INurseRepository;
 import com.example.project.nurse.infraestructure.adapter.out.persistence.database.NurseRepositoryMySql;
 import com.example.project.nurse.infraestructure.adapter.out.persistence.entity.NurseEntity;
-import com.example.project.utils.mapper.GeneralMapper;
+import com.example.project.shared.mapper.GeneralMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

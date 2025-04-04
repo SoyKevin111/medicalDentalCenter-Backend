@@ -3,8 +3,7 @@ package com.example.project.previousEvaluation.domain.validation;
 import com.example.project.previousEvaluation.domain.model.CaseSelected;
 import com.example.project.previousEvaluation.domain.request.PreviousEvaluationItemRequest;
 import com.example.project.previousEvaluation.domain.request.PreviousEvaluationRequest;
-import com.example.project.utils.exception.GeneralValidationException;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.project.shared.exception.GeneralValidationException;
 import org.springframework.stereotype.Component;
 
 import java.util.*;

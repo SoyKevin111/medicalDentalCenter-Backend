@@ -30,7 +30,7 @@ FichaMedica{
 
 EvaluacionPrevia{
   id
-  List<EvaluacionPreviaDetalles> tmsvd .lenght == 4
+  List<EvaluacionPreviaDetalles> evls
   caso
   Enfermera e
 }
@@ -38,7 +38,7 @@ EvaluacionPrevia{
 EvaluacionPreviaDetalle{
  id
  Sintoma stm
- valor:boolean
+ tieneSintoma:boolean
 }
 
 ConsultaMedica{
@@ -119,6 +119,7 @@ agregar dependencia de sql
 en infraestructure/adapter/out/persistence/Repository.java solo cambiar la inyeccion de dependencia a cualquiera de database/
 
 
+Previous Evaluation Request:
 
 {
     "items":[
@@ -137,4 +138,33 @@ en infraestructure/adapter/out/persistence/Repository.java solo cambiar la inyec
     ],
     "nurseId":1,
     "caseSelected":"BRACKETS"
+}
+
+
+Medical Record request:
+
+{
+   "patientId": 3,
+   "medicalConsultation": {
+      "specialistDoctorId": 2,
+      "diagnostic": "xxdd JAJAJAJA"
+   },
+   "previousEvaluation": {
+      "items" : [
+         {
+            "symptomId": 1,
+            "hasSymptom": true
+         },
+         {
+            "symptomId": 2,
+            "hasSymptom": false
+         },
+         {
+            "symptomId": 3,
+            "hasSymptom": true
+         }
+      ],
+      "nurseId": 2,
+      "caseSelected" : "BRACKETS"
+   }
 }

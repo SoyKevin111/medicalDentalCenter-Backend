@@ -1,7 +1,5 @@
 package com.example.project.previousEvaluation.infraestructure.adapter.out.persistence.entity;
 
-
-import com.example.project.nurse.domain.Nurse;
 import com.example.project.nurse.infraestructure.adapter.out.persistence.entity.NurseEntity;
 import com.example.project.previousEvaluation.domain.model.CaseSelected;
 import jakarta.persistence.*;
@@ -23,7 +21,7 @@ public class PreviousEvaluationEntity {
    Long id;
 
    @OneToMany(cascade = {CascadeType.PERSIST})
-   @JoinColumn(name = "previous_evaluation_id")
+   @JoinColumn(name = "previous_evaluation_id") //hace referencia a esta entidad(PreviousEvaluation) en la tabla de items
    List<PreviousEvaluationItemEntity> previousEvaluationItemList = new ArrayList<>();
 
    @ManyToOne(cascade = CascadeType.REFRESH)

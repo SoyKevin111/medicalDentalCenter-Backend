@@ -4,7 +4,7 @@ import com.example.project.specialistDoctor.domain.SpecialistDoctor;
 import com.example.project.specialistDoctor.domain.port.out.ISpecialistDoctorRepository;
 import com.example.project.specialistDoctor.infraestructure.adapter.out.persistence.entity.SpecialistDoctorEntity;
 import com.example.project.specialistDoctor.infraestructure.adapter.out.persistence.database.SpecialistDoctorRepositorySql;
-import com.example.project.utils.mapper.GeneralMapper;
+import com.example.project.shared.mapper.GeneralMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

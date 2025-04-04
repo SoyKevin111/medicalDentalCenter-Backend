@@ -4,13 +4,12 @@ import com.example.project.previousEvaluation.domain.model.PreviousEvaluation;
 import com.example.project.previousEvaluation.domain.port.out.IPreviousEvaluationRepository;
 import com.example.project.previousEvaluation.infraestructure.adapter.out.persistence.database.PreviousEvaluationRepositorySql;
 import com.example.project.previousEvaluation.infraestructure.adapter.out.persistence.entity.PreviousEvaluationEntity;
-import com.example.project.utils.mapper.GeneralMapper;
+import com.example.project.shared.mapper.GeneralMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Repository
 public class PreviousEvaluationRepository implements IPreviousEvaluationRepository {

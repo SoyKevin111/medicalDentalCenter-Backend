@@ -3,9 +3,8 @@ package com.example.project.previousEvaluation.application.validation;
 import com.example.project.nurse.domain.Nurse;
 import com.example.project.nurse.domain.port.in.INurseUseCase;
 import com.example.project.previousEvaluation.domain.request.PreviousEvaluationItemRequest;
-import com.example.project.previousEvaluation.domain.request.PreviousEvaluationRequest;
 import com.example.project.symptom.domain.port.in.ISymptomUseCase;
-import com.example.project.utils.exception.GeneralValidationException;
+import com.example.project.shared.exception.GeneralValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

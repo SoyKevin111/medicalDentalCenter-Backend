@@ -3,7 +3,7 @@ package com.example.project.specialistDoctor.application;
 import com.example.project.specialistDoctor.domain.SpecialistDoctor;
 import com.example.project.specialistDoctor.domain.port.in.ISpecialistDoctorUseCase;
 import com.example.project.specialistDoctor.domain.port.out.ISpecialistDoctorRepository;
-import com.example.project.utils.exception.GeneralValidationException;
+import com.example.project.shared.exception.GeneralValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

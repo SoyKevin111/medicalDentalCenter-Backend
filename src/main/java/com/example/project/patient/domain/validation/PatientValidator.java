@@ -1,8 +1,7 @@
 package com.example.project.patient.domain.validation;
 
 import com.example.project.patient.domain.Gender;
-import com.example.project.patient.domain.Patient;
-import com.example.project.patient.domain.RequestPatient;
+import com.example.project.patient.domain.PatientRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -12,51 +11,59 @@ import java.util.List;
 @Component
 public class PatientValidator {
 
-   public List<String> validatePatientData(Patient patient) {
+   public List<String> validatePatientData(PatientRequest patientRequest) {
       List<String> errors = new ArrayList<>();
 
-      if (patient.getAge() < 3 || patient.getAge() > 100) {
+      if (patientRequest.getAge() < 3 || patientRequest.getAge() > 100) {
          errors.add("Edad menor a 3 o mayor a 100 no esta definido.");
       }
 
-      if ( patient.getIdentification() == null || patient.getIdentification().length() != 10) {
+      if ( patientRequest.getIdentification() == null ||patientRequest.getIdentification().length() != 10) {
          errors.add("Longitud de Identificación debe ser 10.");
       }
 
 
-      if (patient.getGender() == null || patient.getGender().toString().isEmpty()) {
+      if (patientRequest.getGender() == null || patientRequest.getGender().toString().isEmpty()) {
          errors.add("Error propiedad Género no definida o vacia.");
       } else {
-         String genderError = validateGender(patient.getGender()); //no funciona la validacion por tipo
+         String genderError = validateGender(patientRequest.getGender()); //no funciona la validacion por tipo
          if (genderError != null) {
             errors.add(genderError);
          }
       }
 
-      if (patient.getName() == null || patient.getName().isEmpty()) {
+      if (patientRequest.getName() == null || patientRequest.getName().isEmpty()) {
          errors.add("Nombre ingresado esta vacio.");
       }
 
-      if (patient.getSurname() == null || patient.getSurname().isEmpty()) {
+      if (patientRequest.getSurname() == null || patientRequest.getSurname().isEmpty()) {
          errors.add("Apellido ingresado esta vacio.");
       }
 
       return errors;
    }
 
-   public List<String> validateRequestPatientData(RequestPatient requestPatient) {
+   public List<String> validateRequestPatientData(PatientRequest patientRequest) {
       List<String> errors = new ArrayList<>();
 
-      if (requestPatient.age() < 3 || requestPatient.age() > 100) {
+      if (patientRequest.getAge() < 3 || patientRequest.getAge() > 100) {
          errors.add("Edad menor a 3 o mayor a 100 no esta permitido.");
       }
 
-      if (requestPatient.name() ==null || requestPatient.name().isEmpty()) {
+      if (patientRequest.getName() ==null || patientRequest.getName().isEmpty()) {
          errors.add("Nombre ingresado esta vacio.");
       }
 
-      if (requestPatient.surname() ==null ||requestPatient.surname().isEmpty()) {
+      if (patientRequest.getSurname() ==null ||patientRequest.getSurname().isEmpty()) {
          errors.add("Apellido ingresado esta vacio.");
+      }
+
+      if(patientRequest.getGender() != null ){
+         errors.add("Genero update, acceso denegado");
+      }
+
+      if(patientRequest.getIdentification() != null){
+         errors.add("Identificacion update, acceso denegado");
       }
 
       return errors;

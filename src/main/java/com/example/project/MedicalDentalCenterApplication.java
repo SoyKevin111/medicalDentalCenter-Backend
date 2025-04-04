@@ -1,15 +1,13 @@
 package com.example.project;
 
-import com.example.project.medicalconsultation.infraestructure.adapter.out.persistence.database.MedicalConsultationRepositorySql;
-import com.example.project.medicalconsultation.infraestructure.adapter.out.persistence.entity.MedicalConsultationEntity;
+import com.example.project.medicalConsultation.infraestructure.adapter.out.persistence.database.MedicalConsultationRepositorySql;
+import com.example.project.medicalConsultation.infraestructure.adapter.out.persistence.entity.MedicalConsultationEntity;
 import com.example.project.nurse.infraestructure.adapter.out.persistence.database.NurseRepositoryMySql;
 import com.example.project.nurse.infraestructure.adapter.out.persistence.entity.NurseEntity;
 import com.example.project.patient.domain.Gender;
 import com.example.project.patient.infraestructure.adapter.out.persistence.database.PatientRepositorySql;
 import com.example.project.patient.infraestructure.adapter.out.persistence.entity.PatientEntity;
-import com.example.project.previousEvaluation.domain.model.PreviousEvaluationItem;
 import com.example.project.previousEvaluation.infraestructure.adapter.out.persistence.database.PreviousEvaluationItemRepositorySql;
-import com.example.project.previousEvaluation.infraestructure.adapter.out.persistence.entity.PreviousEvaluationItemEntity;
 import com.example.project.specialistDoctor.infraestructure.adapter.out.persistence.entity.SpecialistDoctorEntity;
 import com.example.project.specialistDoctor.infraestructure.adapter.out.persistence.database.SpecialistDoctorRepositorySql;
 import com.example.project.symptom.domain.Symptom;

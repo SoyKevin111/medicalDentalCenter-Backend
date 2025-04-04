@@ -1,12 +1,11 @@
 package com.example.project.previousEvaluation.infraestructure.adapter.out.persistence;
 
-import com.example.project.previousEvaluation.domain.model.PreviousEvaluation;
 import com.example.project.previousEvaluation.domain.model.PreviousEvaluationItem;
 import com.example.project.previousEvaluation.domain.port.out.IPreviousEvaluationItemRepository;
 import com.example.project.previousEvaluation.infraestructure.adapter.out.persistence.database.PreviousEvaluationItemRepositorySql;
 import com.example.project.previousEvaluation.infraestructure.adapter.out.persistence.entity.PreviousEvaluationItemEntity;
 import com.example.project.symptom.domain.Symptom;
-import com.example.project.utils.mapper.GeneralMapper;
+import com.example.project.shared.mapper.GeneralMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

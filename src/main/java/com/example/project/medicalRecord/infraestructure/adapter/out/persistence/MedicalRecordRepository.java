@@ -5,9 +5,11 @@ import com.example.project.medicalRecord.domain.MedicalRecord;
 import com.example.project.medicalRecord.domain.port.out.IMedicalRecordRepository;
 import com.example.project.medicalRecord.infraestructure.adapter.out.persistence.database.MedicalRecordRepositorySql;
 import com.example.project.medicalRecord.infraestructure.adapter.out.persistence.entity.MedicalRecordEntity;
+import com.example.project.medicalRecord.infraestructure.adapter.out.persistence.mapper.MedicalRecordMapper;
 import com.example.project.patient.infraestructure.adapter.out.persistence.entity.PatientEntity;
 import com.example.project.previousEvaluation.infraestructure.adapter.out.persistence.entity.PreviousEvaluationEntity;
 import com.example.project.shared.mapper.GeneralMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,17 +18,17 @@ import java.util.Optional;
 @Repository
 public class MedicalRecordRepository implements IMedicalRecordRepository {
 
+   @Autowired
    private MedicalRecordRepositorySql medicalRecordRepository;
+   @Autowired
    private GeneralMapper generalMapper;
-
-   public MedicalRecordRepository(MedicalRecordRepositorySql medicalRecordRepository, GeneralMapper generalMapper) {
-      this.medicalRecordRepository = medicalRecordRepository;
-      this.generalMapper = generalMapper;
-   }
+   @Autowired
+   private MedicalRecordMapper medicalRecordMapper;
 
    @Override
    public MedicalRecord save(MedicalRecord medicalRecord) { //patient, medicalConsultation,previousEvaluation, dateCrea
-      MedicalRecordEntity medicalRecordEntity = this.medicalRecordToEntity(medicalRecord);
+      MedicalRecordEntity medicalRecordEntity = this.medicalRecordMapper.toEntity(medicalRecord);
+      medicalRecordEntity.setDateCreated();
       return this.generalMapper.toDomain(this.medicalRecordRepository.save(medicalRecordEntity), MedicalRecord.class);
    }
 

@@ -5,6 +5,7 @@ import com.example.project.patient.infraestructure.adapter.out.persistence.entit
 import com.example.project.previousEvaluation.infraestructure.adapter.out.persistence.entity.PreviousEvaluationEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 
@@ -20,7 +21,7 @@ public class MedicalRecordEntity {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    Long id;
 
-   @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+   @OneToOne(cascade = {CascadeType.REFRESH})
    @JoinColumn(name = "patient_id", referencedColumnName = "id", nullable = false)
    PatientEntity patient;
 
@@ -34,4 +35,9 @@ public class MedicalRecordEntity {
 
    @Column(name = "date_created")
    LocalDate dateCreated;
+
+   @PrePersist
+   public void setDateCreated() {
+      this.dateCreated = LocalDate.now();  // Asigna la fecha actual antes de persistir
+   }
 }

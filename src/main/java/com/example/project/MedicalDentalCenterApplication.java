@@ -11,7 +11,7 @@ import com.example.project.previousEvaluation.infraestructure.adapter.out.persis
 import com.example.project.specialistDoctor.infraestructure.adapter.out.persistence.entity.SpecialistDoctorEntity;
 import com.example.project.specialistDoctor.infraestructure.adapter.out.persistence.database.SpecialistDoctorRepositorySql;
 import com.example.project.symptom.domain.Symptom;
-import com.example.project.symptom.infraestructure.adapter.out.persistence.mysql.SymptomRepositoryMysql;
+import com.example.project.symptom.infraestructure.adapter.out.persistence.database.SymptomRepositoryMysql;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

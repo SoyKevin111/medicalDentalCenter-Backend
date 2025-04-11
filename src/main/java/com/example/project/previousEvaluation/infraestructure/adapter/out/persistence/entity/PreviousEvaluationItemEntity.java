@@ -1,6 +1,6 @@
 package com.example.project.previousEvaluation.infraestructure.adapter.out.persistence.entity;
 
-import com.example.project.symptom.domain.Symptom;
+import com.example.project.symptom.infraestructure.adapter.out.persistence.entity.SymptomEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -19,7 +19,7 @@ public class PreviousEvaluationItemEntity {
 
    @ManyToOne(cascade = CascadeType.REFRESH)
    @JoinColumn(name = "symptom_id", referencedColumnName = "id", nullable = false)
-   Symptom symptom;
+   SymptomEntity symptom;
 
    @NotNull
    @Column(name = "has_symptom")

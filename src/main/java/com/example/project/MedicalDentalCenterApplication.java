@@ -8,10 +8,11 @@ import com.example.project.patient.domain.Gender;
 import com.example.project.patient.infraestructure.adapter.out.persistence.database.PatientRepositorySql;
 import com.example.project.patient.infraestructure.adapter.out.persistence.entity.PatientEntity;
 import com.example.project.previousEvaluation.infraestructure.adapter.out.persistence.database.PreviousEvaluationItemRepositorySql;
+import com.example.project.previousEvaluation.infraestructure.adapter.out.persistence.entity.PreviousEvaluationItemEntity;
 import com.example.project.specialistDoctor.infraestructure.adapter.out.persistence.entity.SpecialistDoctorEntity;
 import com.example.project.specialistDoctor.infraestructure.adapter.out.persistence.database.SpecialistDoctorRepositorySql;
-import com.example.project.symptom.domain.Symptom;
 import com.example.project.symptom.infraestructure.adapter.out.persistence.database.SymptomRepositoryMysql;
+import com.example.project.symptom.infraestructure.adapter.out.persistence.entity.SymptomEntity;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -66,10 +67,10 @@ public class MedicalDentalCenterApplication {
 				.name("Susana Manzana")
 				.build();
 
-			Symptom symptom1 = Symptom.builder().name("Fiebre").build(); //"ya es entity"
-			Symptom symptom2 = Symptom.builder().name("Dolor de muela").build();
-			Symptom symptom3 = Symptom.builder().name("Bracket").build();
-			Symptom symptom4 = Symptom.builder().name("Alergia").build();
+			SymptomEntity symptom1 = SymptomEntity.builder().name("Fiebre").build(); //"ya es entity"
+			SymptomEntity symptom2 = SymptomEntity.builder().name("Dolor de muela").build();
+			SymptomEntity symptom3 = SymptomEntity.builder().name("Bracket").build();
+			SymptomEntity symptom4 = SymptomEntity.builder().name("Alergia").build();
 
 			SpecialistDoctorEntity specialistDoctorEntity1 = SpecialistDoctorEntity.builder().name("Kevin Steven").specialty("Odontologo General").build();
 			SpecialistDoctorEntity specialistDoctorEntity2 = SpecialistDoctorEntity.builder().name("Ferran Torres").specialty("Ortodoncista").build();
@@ -81,17 +82,17 @@ public class MedicalDentalCenterApplication {
 				.specialistDoctorEntity(specialistDoctorEntity1)
 				.build();
 
-/*			PreviousEvaluationItemEntity pei = PreviousEvaluationItemEntity.builder()
+			PreviousEvaluationItemEntity pei = PreviousEvaluationItemEntity.builder()
 				.symptom(symptom1)
 				.hasSymptom(true)
-				.build();*/
+				.build();
 
 			patientRepository.saveAll(List.of(patien1, patient2,patient3));
 			nurseRepository.saveAll(List.of(nurse1,nurse2));
 			symptomRepository.saveAll(List.of(symptom1,symptom2,symptom3,symptom4));
 			specialistDoctorRepository.saveAll(List.of(specialistDoctorEntity1, specialistDoctorEntity2, specialistDoctorEntity3));
 			medicalConsultationRepository.save(mce);
-			//previousEvaluationItemRepository.save(pei);
+			previousEvaluationItemRepository.save(pei);
 		};
 	}
 

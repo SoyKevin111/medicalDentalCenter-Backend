@@ -4,8 +4,8 @@ import com.example.project.previousEvaluation.domain.model.PreviousEvaluationIte
 import com.example.project.previousEvaluation.domain.port.out.IPreviousEvaluationItemRepository;
 import com.example.project.previousEvaluation.infraestructure.adapter.out.persistence.database.PreviousEvaluationItemRepositorySql;
 import com.example.project.previousEvaluation.infraestructure.adapter.out.persistence.entity.PreviousEvaluationItemEntity;
-import com.example.project.symptom.domain.Symptom;
 import com.example.project.shared.mapper.GeneralMapper;
+import com.example.project.symptom.infraestructure.adapter.out.persistence.entity.SymptomEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -25,7 +25,7 @@ public class PreviousEvaluationItemRepository implements IPreviousEvaluationItem
       PreviousEvaluationItemEntity peie = this.mapper.toEntity(previousEvaluationItem, PreviousEvaluationItemEntity.class);
       if(previousEvaluationItem.getSymptom() != null){
          peie.setSymptom(
-            this.mapper.toEntity(previousEvaluationItem.getSymptom(), Symptom.class)//ojooo xd, es de dominio pero esta mapeado a sql, seria como un Entity
+            this.mapper.toEntity(previousEvaluationItem.getSymptom(), SymptomEntity.class)//ojooo xd, es de dominio pero esta mapeado a sql, seria como un Entity
          );
          return this.mapper.toDomain(this.previousEvaluationItemRepository.save(peie), PreviousEvaluationItem.class);
       }

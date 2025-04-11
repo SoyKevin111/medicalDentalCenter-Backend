@@ -14,7 +14,7 @@ public class GlobalExceptionHandler {
 
    @ExceptionHandler(GeneralValidationException.class) //Mensaje , Lista de errores de dominio
    public ResponseEntity<?> handlerGeneralException(GeneralValidationException ex){
-      return ResponseEntity.badRequest().body(Collections.singletonMap(ex.getMessage(), ex.getErrors()));
+      return ResponseEntity.badRequest().body(Collections.singletonMap(ex.getType(), ex.getErrors()));
    }
 
 }

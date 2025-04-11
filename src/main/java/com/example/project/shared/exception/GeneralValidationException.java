@@ -4,9 +4,10 @@ import java.util.List;
 
 public class GeneralValidationException extends RuntimeException {
    private List<String> errors;
+   private String type;
 
    public GeneralValidationException(String type, List<String> errors) {
-      super(type);
+      this.type = type;
       this.errors = errors;
    }
 
@@ -14,4 +15,7 @@ public class GeneralValidationException extends RuntimeException {
       return errors;
    }
 
+   public String getType() {
+      return type;
+   }
 }
